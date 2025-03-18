@@ -144,8 +144,6 @@ class TestGoRestAPI:
     ])
     def test_07_negative_scenarios(self, api_context: APIRequestContext, invalid_payload):
         """Test negative scenarios with invalid data"""
-        response = api_context.post(
-            "/public/v2/users",
-            data=json.dumps(invalid_payload)
-        )
+        response = api_context.post("/public/v2/users", data=json.dumps(invalid_payload))
         assert response.status in [400, 422], f"Expected error status code. Response: {response.text()}"
+        
